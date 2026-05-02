@@ -16,7 +16,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       inputClassName = "",
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isFocused, setIsFocused] = useState(false);
     const [hidePassword, setHidePassword] = useState(!!secureTextEntry);
@@ -29,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={cn(
             "flex items-center border rounded-lg transition-colors",
             isFocused ? "border-primary" : "border-gray-300",
-            error && "border-red-500"
+            error && "border-red-500",
           )}
         >
           {leftIcon && <span className="mr-2 text-gray-400">{leftIcon}</span>}
@@ -39,7 +39,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type={hidePassword ? "password" : "text"}
             className={cn(
               "flex-1 py-2 text-base outline-none bg-transparent",
-              inputClassName
+              inputClassName,
             )}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
@@ -62,7 +62,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

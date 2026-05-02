@@ -2,6 +2,7 @@ import { Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
+import { ButtonProps } from "../../types/ui";
 
 const Button: React.FC<ButtonProps> = ({
   title,

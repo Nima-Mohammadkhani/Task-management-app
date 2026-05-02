@@ -33,7 +33,7 @@ const Icon: React.FC<IconProps> = ({
         "inline-flex items-center justify-center",
         onClick && "cursor-pointer",
         hoverEffect && "hover:opacity-75 transition-opacity",
-        className,
+        className
       )}
     >
       <LucideIcon width={finalSize} height={finalSize} color={color} />
