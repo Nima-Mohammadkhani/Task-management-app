@@ -1,11 +1,50 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
 @font-face {
   font-family: vazir;
-  src: url(../font//Vazir-Medium.woff);
+  src: url(..//font/Vazir-Medium.woff);
+  font-display: swap;
 }
 
 body {
-  font-family: vazir;
+  font-family:
+    vazir,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  direction: rtl;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fffdf0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #81c784;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #66bb6a;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out;
 }
