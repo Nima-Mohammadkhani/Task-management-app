@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@font-face {
+  font-family: vazir;
+  src: url(../font//Vazir-Medium.woff);
+}
+
+body {
+  font-family: vazir;
+}
