@@ -42,3 +42,8 @@ export interface InputProps
 export type IconName = keyof typeof Icons;
 export type ButtonVariant = ButtonProps["variant"];
 export type ButtonSize = ButtonProps["size"];
+
+export interface ErrorFallbackProps {
+  error: Error;
+  resetErrorBoundary?: () => void;
+}
