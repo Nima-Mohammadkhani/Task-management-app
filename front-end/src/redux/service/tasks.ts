@@ -20,14 +20,14 @@ export const tasks = createApi({
         invalidatesTags: ["Tasks"],
       },
     ),
-    updateTask: builder.mutation<Task, { id: string; isDone: boolean }>({
-      query: ({ id, ...patch }) => ({
-        url: `tasks/${id}`,
-        method: "PATCH",
-        body: patch,
-      }),
-      invalidatesTags: ["Tasks"],
-    }),
+updateTask: builder.mutation<Task, { id: string; title?: string; description?: string; isDone?: boolean }>({
+  query: ({ id, ...patch }) => ({
+    url: `tasks/${id}`,
+    method: "PATCH",
+    body: patch,
+  }),
+  invalidatesTags: ["Tasks"],
+}),
     deleteTask: builder.mutation<void, string>({
       query: (id) => ({
         url: `tasks/${id}`,
