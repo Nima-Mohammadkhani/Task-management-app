@@ -18,15 +18,15 @@ A clean and modern task management app built with React, TypeScript, and Redux T
 
 ## Tech Stack
 
-| Technology          | Purpose                        |
-| ------------------- | ------------------------------ |
-| React + TypeScript  | Core framework                 |
+| Technology                | Purpose                        |
+| ------------------------- | ------------------------------ |
+| React + TypeScript        | Core framework                 |
 | Redux Toolkit + RTK Query | State management & API caching |
-| Vite                | Build tool                     |
-| TailwindCSS + DaisyUI | Styling                        |
-| Framer Motion       | Animations                     |
-| React Toastify      | Notifications                  |
-| Lucide React        | Icons                          |
+| Vite                      | Build tool                     |
+| TailwindCSS + DaisyUI     | Styling                        |
+| Framer Motion             | Animations                     |
+| React Toastify            | Notifications                  |
+| Lucide React              | Icons                          |
 
 ---
 
@@ -63,11 +63,11 @@ npm run start:dev
 
 ## Available Scripts
 
-| Command           | Description                    |
-| ----------------- | ------------------------------ |
-| `npm run dev`     | Start development server       |
-| `npm run build`   | Build for production           |
-| `npm run preview` | Preview production build       |
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
 
 ---
 
@@ -124,6 +124,7 @@ First-time users see a welcome screen with a "Let's Start" button. This screen a
 ### 2. Dashboard Card
 
 Shows:
+
 - Welcome message
 - Total tasks count
 - Completed tasks count
@@ -145,6 +146,7 @@ Shows:
 ### 5. Task Item
 
 Each task card includes:
+
 - **Checkbox** – toggle completion status
 - **Title** – shows with strikethrough when completed
 - **Description** – optional
@@ -170,14 +172,15 @@ Each task card includes:
 
 The app connects to the backend at `http://localhost:3000` via RTK Query:
 
-| Action | Method | Endpoint           |
-| ------ | ------ | ------------------ |
-| Fetch all tasks | GET    | `/tasks`    |
-| Create task     | POST   | `/tasks`    |
+| Action          | Method | Endpoint     |
+| --------------- | ------ | ------------ |
+| Fetch all tasks | GET    | `/tasks`     |
+| Create task     | POST   | `/tasks`     |
 | Update task     | PATCH  | `/tasks/:id` |
 | Delete task     | DELETE | `/tasks/:id` |
 
 RTK Query automatically handles:
+
 - Loading states
 - Error states
 - Caching
@@ -189,8 +192,8 @@ RTK Query automatically handles:
 
 ### Color Palette
 
-| Role          | Light Mode | Dark Mode |
-| ------------- | ---------- | --------- |
+| Role              | Light Mode         | Dark Mode |
+| ----------------- | ------------------ | --------- |
 | Primary (buttons) | `#FDE047` (yellow) | `#FEF08A` |
 | Secondary         | `#86EFAC` (green)  | `#A3E635` |
 | Background        | `#F8FAFC`          | `#18181B` |
@@ -208,11 +211,11 @@ RTK Query automatically handles:
 
 ## Responsive Design
 
-| Device      | Task Edit Component   |
-| ----------- | --------------------- |
-| Desktop     | Modal (centered popup) |
-| Tablet      | Modal (centered popup) |
-| Mobile      | BottomSheet (from bottom) |
+| Device  | Task Edit Component       |
+| ------- | ------------------------- |
+| Desktop | Modal (centered popup)    |
+| Tablet  | Modal (centered popup)    |
+| Mobile  | BottomSheet (from bottom) |
 
 Detection is automatic based on `window.innerWidth < 768`.
 
@@ -220,12 +223,12 @@ Detection is automatic based on `window.innerWidth < 768`.
 
 ## Common Issues
 
-| Issue                                  | Solution                                             |
-| -------------------------------------- | ---------------------------------------------------- |
-| Backend connection failed              | Make sure backend is running on `http://localhost:3000` |
-| Tasks not showing up                   | Check if Docker container and backend are running   |
-| Styling looks broken                   | Clear browser cache (Ctrl + Shift + R)              |
-| Dark mode not persisting               | Check localStorage: `localStorage.getItem('theme')` |
+| Issue                     | Solution                                                |
+| ------------------------- | ------------------------------------------------------- |
+| Backend connection failed | Make sure backend is running on `http://localhost:3000` |
+| Tasks not showing up      | Check if Docker container and backend are running       |
+| Styling looks broken      | Clear browser cache (Ctrl + Shift + R)                  |
+| Dark mode not persisting  | Check localStorage: `localStorage.getItem('theme')`     |
 
 ---
 
