@@ -28,7 +28,7 @@ const Modal: React.FC<ModalProps> = ({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
-        className={`bg-white rounded-lg shadow-2xl w-full p-4  ${sizeClasses[size]} ${className}`}
+        className={`bg-base-100 rounded-lg shadow-2xl w-full p-4  ${sizeClasses[size]} ${className}`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

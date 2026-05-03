@@ -69,16 +69,26 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
       >
         <Sheet.Container
           style={{
-            backgroundColor: "var(--surface)",
-            borderTop: "1px solid var(--surfaceBorder)",
+            backgroundColor: "#FFFFFF",
+            borderTopLeftRadius: "20px",
+            borderTopRightRadius: "20px",
+            borderTop: "1px solid #FEFCE8",
           }}
         >
-          <Sheet.Header />
+          <Sheet.Header
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderTopLeftRadius: "20px",
+              borderTopRightRadius: "20px",
+              paddingTop: "12px",
+              paddingBottom: "8px",
+            }}
+          />
           <Sheet.Content
             style={{
               padding: 0,
-              backgroundColor: "var(--surface)",
-              color: "var(--surfaceText)",
+              backgroundColor: "#FFFFFF",
+              color: "#5D6B5E",
             }}
           >
             {children}
