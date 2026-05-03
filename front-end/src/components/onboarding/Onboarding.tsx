@@ -81,7 +81,7 @@ const Onboarding = ({ onGetStarted }: OnboardingProps) => {
             <motion.div variants={itemVariants}>
               <Button
                 onClick={onGetStarted}
-                className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+                className="bg-primary text-black/80 hover:bg-primary/90 px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
                 title="شروع کنید"
               />
             </motion.div>

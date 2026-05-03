@@ -1,37 +1,103 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+@plugin "daisyui" {
+  themes: pastel pastel-dark --default;
+}
+
+[data-theme="pastel"] {
+  --color-primary: #FDE047;
+  --color-primary-content: #422006;
+  
+  --color-secondary: #86EFAC;
+  --color-secondary-content: #14532D;
+  
+  --color-accent: #FED7AA;
+  --color-accent-content: #7C2D12;
+  
+  --color-neutral: #A1A1AA;
+  --color-neutral-content: #FFFFFF;
+  
+  --color-base-100: #FFFFFF;
+  --color-base-200: #F8FAFC;
+  --color-base-300: #F1F5F9;
+  --color-base-content: #334155;
+  
+  --color-info: #7DD3FC;
+  --color-info-content: #0F172A;
+  --color-success: #86EFAC;
+  --color-success-content: #14532D;
+  --color-warning: #FDE047;
+  --color-warning-content: #422006;
+  --color-error: #FCA5A5;
+  --color-error-content: #7F1D1D;
+  
+  --radius-box: 1rem;
+  --radius-field: 0.75rem;
+  --radius-selector: 0.5rem;
+}
+
+[data-theme="pastel-dark"] {
+  --color-primary: #FEF08A;
+  --color-primary-content: #1E1B0A;
+  
+  --color-secondary: #A3E635;
+  --color-secondary-content: #0A1A0A;
+  
+  --color-accent: #FED7AA;
+  --color-accent-content: #2D1A0A;
+  
+  --color-neutral: #6B7280;
+  --color-neutral-content: #F3F4F6;
+  
+  --color-base-100: #1E1E2E;
+  --color-base-200: #18181B;
+  --color-base-300: #27272A;
+  --color-base-content: #D4D4D8;
+  
+  --color-info: #38BDF8;
+  --color-info-content: #F0F9FF;
+  --color-success: #A3E635;
+  --color-success-content: #0A1A0A;
+  --color-warning: #FDE047;
+  --color-warning-content: #1E1B0A;
+  --color-error: #F87171;
+  --color-error-content: #1F0A0A;
+  
+  --radius-box: 1rem;
+  --radius-field: 0.75rem;
+  --radius-selector: 0.5rem;
+}
+
 @font-face {
   font-family: vazir;
-  src: url(..//font/Vazir-Medium.woff);
+  src: url(./assets/fonts/Vazir-Medium.woff);
   font-display: swap;
 }
 
+* {
+  font-family: vazir, system-ui, -apple-system, sans-serif;
+}
+
 body {
-  font-family:
-    vazir,
-    system-ui,
-    -apple-system,
-    sans-serif;
   direction: rtl;
+  background-color: #F8FAFC;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+[data-theme="pastel-dark"] body {
+  background-color: #18181B;
 }
 
-::-webkit-scrollbar-track {
-  background: #fffdf0;
-  border-radius: 10px;
+.card {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.2s ease;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #81c784;
-  border-radius: 10px;
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #66bb6a;
+[data-theme="pastel-dark"] .card {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
 }
 
 @keyframes fadeIn {
@@ -44,7 +110,28 @@ body {
     transform: translateY(0);
   }
 }
-
 .animate-fade-in {
   animation: fadeIn 0.25s ease-out;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #FDE047;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EAB308;
+}
+
+[data-theme="pastel-dark"] ::-webkit-scrollbar-track {
+  background: #27272A;
+}
+[data-theme="pastel-dark"] ::-webkit-scrollbar-thumb {
+  background: #FEF08A;
 }

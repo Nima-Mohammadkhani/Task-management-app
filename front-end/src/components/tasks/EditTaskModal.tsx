@@ -6,6 +6,7 @@ import { Task } from "../../types/task";
 import Modal from "../ui/Modal";
 import BottomSheet from "../ui/BottomSheet";
 import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 interface EditTaskProps {
   isOpen: boolean;
@@ -114,21 +115,17 @@ function EditTask({ isOpen, onClose, task }: EditTaskProps) {
       />
 
       <div className="flex gap-3 pt-2">
-        <button
-          type="button"
+        <Button
+          title="انصراف"
           onClick={onClose}
           className="btn btn-ghost flex-1 rounded-xl"
-        >
-          انصراف
-        </button>
-        <button
-          type="button"
+        />
+        <Button
+          title={isLoading ? "در حال ذخیره..." : "ذخیره تغییرات"}
           onClick={handleSave}
           disabled={isLoading}
           className="btn btn-primary flex-1 rounded-xl"
-        >
-          {isLoading ? "در حال ذخیره..." : "ذخیره تغییرات"}
-        </button>
+        />
       </div>
     </div>
   );

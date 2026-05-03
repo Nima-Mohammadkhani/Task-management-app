@@ -1,15 +1,8 @@
 import { motion } from "framer-motion";
-import { useGetTasksQuery } from "../redux/service/tasks";
 import TaskForm from "../components/tasks/TaskForm";
 import TaskList from "../components/tasks/TaskList";
 
 function HomePage() {
-  const { data: tasks = [] } = useGetTasksQuery();
-  const doneCount = tasks.filter((t) => t.isDone).length;
-  const totalCount = tasks.length;
-  const percent =
-    totalCount === 0 ? 0 : Math.round((doneCount / totalCount) * 100);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
