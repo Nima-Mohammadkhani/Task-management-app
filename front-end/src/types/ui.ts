@@ -1,5 +1,6 @@
+import { number } from "framer-motion";
 import * as Icons from "lucide-react";
-import React from "react";
+import React, { ReactNode } from "react";
 
 export interface ButtonProps {
   title?: string;
@@ -27,8 +28,7 @@ export interface IconProps {
   hoverEffect?: boolean;
 }
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
   leftIcon?: React.ReactNode;
@@ -37,6 +37,8 @@ export interface InputProps
   secureToggle?: boolean;
   containerClassName?: string;
   inputClassName?: string;
+  multiline?: boolean;
+  rows?: number;
 }
 
 export type IconName = keyof typeof Icons;
@@ -46,4 +48,25 @@ export type ButtonSize = ButtonProps["size"];
 export interface ErrorFallbackProps {
   error: Error;
   resetErrorBoundary?: () => void;
+}
+
+export interface BottomSheetProps {
+  visible?: boolean;
+  isOpen?: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+  snapPoints?: number[];
+  hideBackdrop?: boolean;
+  backdropColor?: string;
+  zIndex?: number;
+  disableDrag?: boolean;
+  preventClose?: boolean;
+}
+
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
+  className?: string;
+  size?: "sm" | "md" | "lg" | "xl" | "full";
 }

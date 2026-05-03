@@ -1,9 +1,9 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useState, memo } from "react";
 import { cn } from "../../lib/utils";
 import { Eye, EyeOff } from "lucide-react";
 import { InputProps } from "../../types/ui";
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const Input = memo(forwardRef<HTMLInputElement, InputProps>(
   (
     {
       label,
@@ -14,43 +14,69 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       secureToggle = false,
       containerClassName = "",
       inputClassName = "",
+      multiline = false,
+      rows = 3,
+      value,
+      onChange,
       ...props
     },
     ref,
   ) => {
-    const [isFocused, setIsFocused] = useState(false);
     const [hidePassword, setHidePassword] = useState(!!secureTextEntry);
 
+    const baseInputClasses = cn(
+      "w-full py-2 px-3 text-base outline-none bg-transparent rounded-xl",
+      "transition-all duration-200",
+      inputClassName,
+    );
+
+    const handleTogglePassword = () => {
+      setHidePassword(!hidePassword);
+    };
+
+    const inputElement = multiline ? (
+      <textarea
+        className={baseInputClasses}
+        rows={rows}
+        value={value}
+        onChange={onChange}
+        {...(props as any)}
+      />
+    ) : (
+      <input
+        ref={ref}
+        type={hidePassword ? "password" : "text"}
+        className={baseInputClasses}
+        value={value}
+        onChange={onChange}
+        {...props}
+      />
+    );
+
     return (
-      <div className={cn(containerClassName)}>
-        {label && <label className="mb-1 block">{label}</label>}
+      <div className={cn("w-full", containerClassName)}>
+        {label && (
+          <label className="block text-sm font-medium text-base-content mb-2">
+            {label}
+          </label>
+        )}
 
         <div
           className={cn(
-            "flex items-center border rounded-lg transition-colors",
-            isFocused ? "border-primary" : "border-gray-300",
-            error && "border-red-500",
+            "flex items-center border rounded-xl transition-all duration-200 bg-base-100",
+            "focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20",
+            error && "border-red-500 ring-2 ring-red-500/20",
           )}
         >
           {leftIcon && <span className="mr-2 text-gray-400">{leftIcon}</span>}
-
-          <input
-            ref={ref}
-            type={hidePassword ? "password" : "text"}
-            className={cn(
-              "flex-1 py-2 text-base outline-none bg-transparent",
-              inputClassName,
-            )}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            {...props}
-          />
-
+          
+          {inputElement}
+          
           {secureToggle ? (
             <button
               type="button"
-              onClick={() => setHidePassword(!hidePassword)}
-              className="ml-2 text-gray-400 hover:text-gray-600"
+              onClick={handleTogglePassword}
+              className="ml-2 text-gray-400 hover:text-gray-600 transition-colors"
             >
               {hidePassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
@@ -59,11 +85,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
 
-        {error && <p className="mt-1 text-red-500 text-sm">{error}</p>}
+        {error && <p className="mt-1 text-error text-sm">{error}</p>}
       </div>
     );
   },
-);
+));
 
 Input.displayName = "Input";
 export default Input;
