@@ -247,4 +247,3 @@ But for this task, it's solid.
 The app is fully functional, responsive, and production-ready.
 
 Run `npm run dev` and start managing your tasks!
-```

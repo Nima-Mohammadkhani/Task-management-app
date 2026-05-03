@@ -1,8 +1,8 @@
 @import "tailwindcss";
-
 @plugin "daisyui" {
   themes: pastel pastel-dark --default;
 }
+@import "react-toastify/dist/ReactToastify.css";
 
 [data-theme="pastel"] {
   --color-primary: #FDE047;
@@ -134,4 +134,19 @@ body {
 }
 [data-theme="pastel-dark"] ::-webkit-scrollbar-thumb {
   background: #FEF08A;
+}
+.Toastify__toast-container {
+  font-family: "Vazir", system-ui, sans-serif;
+}
+
+.Toastify__toast {
+  font-family: "Vazir", system-ui, sans-serif !important;
+}
+
+.Toastify__toast-body {
+  font-family: "Vazir", system-ui, sans-serif !important;
+}
+
+.font-vazir {
+  font-family: "Vazir", system-ui, sans-serif;
 }
