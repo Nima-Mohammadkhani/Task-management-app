@@ -18,6 +18,9 @@ interface EnhancedButtonProps extends ButtonProps {
   iconClassName?: string;
   iconRotate?: number;
   iconCenter?: boolean;
+  iconSize?: number;
+  rippleColor?: any;
+  onPress?: void
 }
 
 const Button = ({
@@ -44,25 +47,19 @@ const Button = ({
     "flex-row rounded-lg items-center justify-center overflow-hidden";
 
   const variantClasses: Record<string, string> = {
-    primary: "bg-blue-600",
-    secondary: "bg-green-600",
-    outline: "border border-blue-600 bg-transparent",
-  };
-
-  const sizeClasses: Record<string, string> = {
-    sm: "px-3 py-2",
-    md: "px-4 py-3",
-    lg: "px-6 py-4",
+    primary: "bg-primary",
+    secondary: "bg-secondary",
+    outline: "border border-primary bg-transparent",
   };
 
   const textBase = "font-semibold font-vazir";
   const textVariant: Record<string, string> = {
-    primary: "text-white",
-    secondary: "text-white",
-    outline: "text-blue-600",
+    primary: "text-primary-content",
+    secondary: "text-secondary-content",
+    outline: "text-primary",
   };
 
-  const iconColor = variant === "outline" ? "#007AFF" : "#fff";
+  const iconColor = variant === "outline" ? "#FDE047" : "#FFFFFF";
 
   const handlePressIn = () => {
     Animated.timing(opacity, {
@@ -82,25 +79,19 @@ const Button = ({
     }).start();
   };
 
-  const buttonClasses =
-    `${baseClasses} ${variantClasses[variant]} ` +
-    (disabled ? "bg-gray-400 border-gray-300 " : "") +
-    className;
+  const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${disabled ? "bg-gray-400 border-gray-300" : ""} ${className}`;
 
-  const textClasses =
-    `${textBase} ${textVariant[variant]} ` +
-    (disabled ? "text-gray-200 " : "") +
-    textClassName;
+  const textClasses = `${textBase} ${textVariant[variant]} ${disabled ? "text-gray-200" : ""} ${textClassName}`;
 
   return (
     <Pressable
-      onPress={!disabled && !loading ? onPress : undefined}
-      disabled={disabled}
+      onPress={!disabled && !loading && onPress ? onPress : undefined}
+      disabled={disabled || loading}
       android_ripple={{
         color:
           rippleColor ||
           (variant === "outline"
-            ? "rgba(0,122,255,0.15)"
+            ? "rgba(253,224,71,0.15)"
             : "rgba(255,255,255,0.2)"),
         borderless: false,
       }}
@@ -124,14 +115,14 @@ const Button = ({
       >
         {loading ? (
           <ActivityIndicator
-            color={variant === "outline" ? "#007AFF" : "#fff"}
+            color={variant === "outline" ? "#FDE047" : "#FFFFFF"}
             size="small"
           />
         ) : (
           <>
             {iconLeft && !iconCenter && (
               <Ionicons
-                name={iconLeft}
+                name={iconLeft as any}
                 size={iconSize}
                 color={iconColor}
                 className={iconClassName}
@@ -148,7 +139,7 @@ const Button = ({
             )}
             {iconRight && (
               <Ionicons
-                name={iconRight}
+                name={iconRight as any}
                 size={iconSize}
                 color={iconColor}
                 className={iconClassName}

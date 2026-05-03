@@ -7,7 +7,7 @@ import Toast from "react-native-toast-message";
 import {
   useDeleteTaskMutation,
   useUpdateTaskMutation,
-} from "../../redux/service/tasksApi";
+} from "@/redux/service/tasks";
 import EditTask from "./EditTaskModal";
 
 interface TaskItemProps {

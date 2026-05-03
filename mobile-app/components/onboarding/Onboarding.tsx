@@ -25,14 +25,14 @@ const Onboarding = ({ onGetStarted }: OnboardingProps) => {
           </MotiView>
 
           <MotiView
-            from={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            from={{ opacity: 0, translateY: 20 }}
+            animate={{ opacity: 1, translateY: 0 }}
             transition={{ type: "timing", duration: 500, delay: 200 }}
             className="items-center md:items-end"
           >
             <MotiView
-              from={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              from={{ opacity: 0, translateY:10 }}
+              animate={{ opacity: 1, translateY: 0 }}
               transition={{ delay: 400 }}
               className="flex-row items-center gap-2 mb-4"
             >

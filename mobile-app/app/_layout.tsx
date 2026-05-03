@@ -21,7 +21,7 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    Vazir: require("../assets/fonts/Vazir-Medium.ttf"),
+    Vazir: require("../assets/font/Vazir-Medium.ttf"),
   });
 
   const [appIsReady, setAppIsReady] = useState(false);

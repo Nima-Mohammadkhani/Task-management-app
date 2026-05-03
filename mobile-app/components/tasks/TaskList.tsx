@@ -1,6 +1,6 @@
 import { View, Text, ActivityIndicator, ScrollView, TouchableOpacity } from 'react-native';
 import { MotiView } from 'moti';
-import { useGetTasksQuery } from '../../redux/service/tasksApi';
+import { useGetTasksQuery } from "@/redux/service/tasks";
 import TaskItem from './TaskItem';
 
 function TaskList() {

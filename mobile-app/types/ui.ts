@@ -1,4 +1,4 @@
-import { number } from "framer-motion";
+import { TextInputProps } from "react-native";
 import * as Icons from "lucide-react";
 import React, { ReactNode } from "react";
 
@@ -28,7 +28,7 @@ export interface IconProps {
   hoverEffect?: boolean;
 }
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
   leftIcon?: React.ReactNode;
@@ -39,6 +39,11 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   inputClassName?: string;
   multiline?: boolean;
   rows?: number;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  editable?: boolean;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
 export type IconName = keyof typeof Icons;
@@ -69,4 +74,10 @@ export interface ModalProps {
   children: ReactNode;
   className?: string;
   size?: "sm" | "md" | "lg" | "xl" | "full";
+}
+
+export interface BottomSheetProps {
+  visible: boolean;
+  onClose: () => void;
+  children: ReactNode;
 }

@@ -10,8 +10,8 @@ import {
   ScrollView,
 } from "react-native";
 import { MotiView } from "moti";
-import { toast } from "react-native-toast-message";
-import { useUpdateTaskMutation } from "../../redux/service/tasksApi";
+import Toast from 'react-native-toast-message';
+import { useUpdateTaskMutation } from "@/redux/service/tasks";
 import { Task } from "../../types/task";
 import { X } from "lucide-react-native";
 
@@ -35,7 +35,7 @@ function EditTask({ isOpen, onClose, task }: EditTaskProps) {
 
   const handleSave = useCallback(async () => {
     if (!title.trim()) {
-      toast.show({
+      Toast.show({
         type: "error",
         text1: "خطا",
         text2: "عنوان تسک نمی‌تواند خالی باشد",
@@ -49,14 +49,14 @@ function EditTask({ isOpen, onClose, task }: EditTaskProps) {
         title: title.trim(),
         description: description.trim() || undefined,
       }).unwrap();
-      toast.show({
+      Toast.show({
         type: "success",
         text1: "موفق",
         text2: "تسک با موفقیت ویرایش شد",
       });
       onClose();
     } catch {
-      toast.show({
+      Toast.show({
         type: "error",
         text1: "خطا",
         text2: "خطا در ویرایش تسک",
@@ -100,7 +100,7 @@ function EditTask({ isOpen, onClose, task }: EditTaskProps) {
       <View className="flex-row gap-3 pt-2">
         <TouchableOpacity
           onPress={onClose}
-          className="flex-1 btn btn-ghost rounded-xl py-3 border border-gray-200"
+          className="flex-1 rounded-xl py-3 border border-gray-200 items-center"
         >
           <Text className="text-base-content">انصراف</Text>
         </TouchableOpacity>
@@ -108,7 +108,7 @@ function EditTask({ isOpen, onClose, task }: EditTaskProps) {
         <TouchableOpacity
           onPress={handleSave}
           disabled={isLoading}
-          className={`flex-1 btn btn-primary rounded-xl py-3 ${isLoading ? "opacity-50" : ""}`}
+          className={`flex-1 bg-primary rounded-xl py-3 items-center ${isLoading ? "opacity-50" : ""}`}
         >
           <Text className="text-primary-content font-medium">
             {isLoading ? "در حال ذخیره..." : "ذخیره تغییرات"}

@@ -11,20 +11,19 @@ import {
   BottomSheetBackdrop,
 } from "@gorhom/bottom-sheet";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IbottomSheetProps } from "@/types/ui";
-import { useTheme } from "@/constants/theme";
+import { BottomSheetProps } from "@/types/ui";
 
 export type CustomBottomSheetRef = BottomSheetModal;
 
-const CustomBottomSheet = forwardRef<BottomSheetModal, IbottomSheetProps>(
+const CustomBottomSheet = forwardRef<BottomSheetModal, BottomSheetProps>(
   (props, ref) => {
     const insets = useSafeAreaInsets();
     const internalRef = useRef<BottomSheetModal>(null);
     const sheetRef = (ref || internalRef) as React.RefObject<BottomSheetModal>;
 
     const [keyboardHeight, setKeyboardHeight] = useState(0);
-    const { colors } = useTheme();
     const scheme = useColorScheme();
+
     useEffect(() => {
       const showEvent =
         Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow";
@@ -75,7 +74,7 @@ const CustomBottomSheet = forwardRef<BottomSheetModal, IbottomSheetProps>(
         handleIndicatorStyle={{ backgroundColor: "#ccc", width: 50 }}
         backgroundStyle={{
           borderRadius: 24,
-          backgroundColor: scheme == "dark" ? "#1C1C1E" : "#ffffff",
+          backgroundColor: scheme === "dark" ? "#1C1C1E" : "#ffffff",
         }}
         enableHandlePanningGesture={true}
         enableContentPanningGesture={false}
@@ -85,7 +84,7 @@ const CustomBottomSheet = forwardRef<BottomSheetModal, IbottomSheetProps>(
       >
         <BottomSheetView
           style={{
-            backgroundColor: scheme == "dark" ? "#1C1C1E" : "#ffffff",
+            backgroundColor: scheme === "dark" ? "#1C1C1E" : "#ffffff",
             paddingBottom: keyboardHeight
               ? keyboardHeight + 25 + insets.bottom
               : insets.bottom,
@@ -97,5 +96,7 @@ const CustomBottomSheet = forwardRef<BottomSheetModal, IbottomSheetProps>(
     );
   },
 );
+
+CustomBottomSheet.displayName = "CustomBottomSheet";
 
 export default CustomBottomSheet;

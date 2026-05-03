@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { MotiView } from "moti";
 import { Plus } from "lucide-react-native";
-import { useCreateTaskMutation } from "../../redux/service/tasksApi";
+import { useCreateTaskMutation } from "@/redux/service/tasks";
 import Toast from "react-native-toast-message";
 
 function TaskForm() {

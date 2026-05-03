@@ -11,7 +11,7 @@ const Input = memo(
         error,
         leftIcon,
         rightIcon,
-        secureTextEntry,
+        secureTextEntry = false,
         secureToggle = false,
         containerClassName = "",
         inputClassName = "",
@@ -21,6 +21,8 @@ const Input = memo(
         onChangeText,
         placeholder,
         editable = true,
+        onFocus,
+        onBlur,
         ...props
       },
       ref,
@@ -30,6 +32,16 @@ const Input = memo(
 
       const handleTogglePassword = () => {
         setHidePassword(!hidePassword);
+      };
+
+      const handleFocus = () => {
+        setIsFocused(true);
+        onFocus?.();
+      };
+
+      const handleBlur = () => {
+        setIsFocused(false);
+        onBlur?.();
       };
 
       return (
@@ -43,48 +55,33 @@ const Input = memo(
           <View
             className={`flex-row items-center border rounded-xl transition-all duration-200 bg-base-100 ${
               isFocused
-                ? "border-primary ring-2 ring-primary/20"
+                ? "border-primary"
                 : "border-gray-200"
-            } ${error ? "border-red-500 ring-2 ring-red-500/20" : ""}`}
+            } ${error ? "border-red-500" : ""}`}
           >
-            {leftIcon && <View className="mr-2">{leftIcon}</View>}
+            {leftIcon && <View className="ml-2">{leftIcon}</View>}
 
-            {multiline ? (
-              <TextInput
-                ref={ref}
-                value={value}
-                onChangeText={onChangeText}
-                placeholder={placeholder}
-                placeholderTextColor="#9CA3AF"
-                multiline
-                numberOfLines={rows}
-                editable={editable}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                className={`flex-1 py-2 px-3 text-base outline-none bg-transparent rounded-xl text-right ${inputClassName}`}
-                style={{ textAlignVertical: "top" }}
-                {...(props as any)}
-              />
-            ) : (
-              <TextInput
-                ref={ref}
-                value={value}
-                onChangeText={onChangeText}
-                placeholder={placeholder}
-                placeholderTextColor="#9CA3AF"
-                secureTextEntry={secureTextEntry && hidePassword}
-                editable={editable}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                className={`flex-1 py-2 px-3 text-base outline-none bg-transparent rounded-xl text-right ${inputClassName}`}
-                {...props}
-              />
-            )}
+            <TextInput
+              ref={ref}
+              value={value}
+              onChangeText={onChangeText}
+              placeholder={placeholder}
+              placeholderTextColor="#9CA3AF"
+              multiline={multiline}
+              numberOfLines={multiline ? rows : 1}
+              editable={editable}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              secureTextEntry={secureTextEntry && hidePassword}
+              className={`flex-1 py-2 px-3 text-base bg-transparent rounded-xl text-right ${inputClassName}`}
+              style={multiline ? { textAlignVertical: "top" } : undefined}
+              {...props}
+            />
 
             {secureToggle ? (
               <TouchableOpacity
                 onPress={handleTogglePassword}
-                className="ml-2 p-1"
+                className="mr-2 p-1"
                 activeOpacity={0.7}
               >
                 {hidePassword ? (
@@ -94,7 +91,7 @@ const Input = memo(
                 )}
               </TouchableOpacity>
             ) : (
-              rightIcon && <View className="ml-2">{rightIcon}</View>
+              rightIcon && <View className="mr-2">{rightIcon}</View>
             )}
           </View>
 
